@@ -53,10 +53,3 @@ which cat
 # export ile env variable olusturabilir ve guncelleyebilirz
 export TESTENV=test
 
-
-
-
-
-
-
-
