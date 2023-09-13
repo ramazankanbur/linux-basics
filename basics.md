@@ -43,8 +43,6 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
   
   * Linux tarafında linkleme ile windows'taki shortcut'a benzer bir yapı oluşturabiliriz. İki tip linkleme yapabiliriz. İlki soft (sembolik) ikincisi hard linktir. Dosyanın soft link olduğunu önündeki l harfinden anlayabilir ya da soft link için neye linkli olduğunu ok ile görebiliriz. Hard linkte l harfi satır başında  olmaz. Linklerin başka bir temel amacına örnek olarak; bir uyglamanın ilk versiyonunda ayarların bir x dizininde tutulduğunu varsayalım. Bu uygulamayı kullanacak diğer uygulamalar ayalar dosyalarını x dizininden alacak şekilde configure edilmiş olur. Sonraki versiyonlarda ayarları fakrlı bir dizine taşıdığımızda uygulamalar hala ayarları x te arayacakları için bu dizin içine linkleme yapabiliriz. Hem dosya hem de klasör için linkleme yapabiliriz. 
 
-
-
   * link dosya silinir ise ana dosya silinmez. 
 
   * ana dosya silinirse link dosya silinir. (ls ile listeleniyor olur ama içine girmeye çalıştığında dosya yok hatası verir) 
@@ -57,5 +55,47 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 * Vim ile dosya editleme yapabiliriz. i harfi ile insert moduna geçip değişiklik yapabilir. esc ile düzenleme modundan çıkabiliriz. kayıt edip çıkmak için ise wq! kullanırız.
 
 * Set nu ile satıların numaralarını gösterir. Tersi set nonu'dur.
+
+* Set nonu ile satır numaraları silinir.
+
+  ![alt text](images/vim.png)
+
+--------------------
+
+## Linux dosya ve klasör yetkileri
+
+  ![alt text](images/permissions.jpeg)
+
+  * Yetkileri iki farklı şekilde gösterebiliriz. rwx yada bu kombinasyonların octal karşılıkları şeklinde ifade edebiliriz. Aşağıdaki görsele göre alabileceği değerleri inceleyebiliriz.
+
+  ![alt text](images/permission_numeric.png)
+
+  * Genelde kullanılan yetkiler;
+  700 -> - rwx --- ---
+  755 -> - rwx r-x r-x
+  664 -> - rw- rw- r--
+  660 -> - rw- rw- ---
+  644 -> - rw- r-- r--
+
+* 777 ve 666 yetkileri verilirken dikkat edilmelidir. Çünkü sistemde herkesin dosyayı çalıştırabilmesine ya da güncelleme yapabilmesine olanak sağlamış oluruz. Hack durumunda ya da hatalı işlem yapılması durumunda sonuçlar kötü olabilir.
+
+* Linux'ta bir klasor yaratıldığında varsayılan yetkisi 777, dosya yaratıldığında 666'dır. Fakat umask sistemi ile varsayılan olarak atanacak yetkileri değiştirebiliriz. Kullanıcı bazlı bu umask düzenlenir. 
+
+* Sistem üzerindeki kullanıcılar /etc/passwd dosyası altında bulunmaktadır.
+
+  ![alt text](images/user_passwd.png)
+
+* /etc/default/useradd dosyasında user yaratılırken kullanılacak defaultlar belirlenir. 
+
+  ![alt text](images/useradd_default.png)
+
+* Sistem ile ilgili işlemler yaparken ya root kullanıcıya geçmeliyiz ya da sudo komutu ile root kullanıcı gibi işlem yapmalıyız. Sudo sudoer olarak atanmış kullanıcıların çalıştırabileceği bir komuttur.
+
+* su ile shell içinde kullanıcı değiştirme işlemi yaparsak yeni bir session başlar. Bu sesion üzerinde ex,t komutu çalıştırırsak önceki user session'ına döner. Tekrar exit yaptığımızda logout işlemi yapar.
+
+* Linux dünyasında her kullanıcı kendi adında bir gruba eklenir. 
+
+* Her linux distrosunda özel bir sudoer grubu vardır. Bu gruba eklenen kullanıcılar sudo yapabilirler. debian temelli distrolarda sudo grubu, fedora temelli distrolarda wheel gruplarına eklenen user'lar sudo komutuna yetkileri olur. 
+
 
 </details>
