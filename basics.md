@@ -99,3 +99,69 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 
 
 </details>
+
+
+
+<details>
+  <summary>07.09.2023</summary>
+  
+  * Linux multiuser kullanıma uygun bir sistem olduğu ve userların yetki yönetimlerini daha rahat yapabilmek için group'lar kullanılabilir. 
+
+  * Groupları /etc/groups dosyasında görebiliriz.
+
+  * Dosyaların grouplarla da bir ilişkisi vardır. Varsayılan olarak dosyayı yaratan userın ana group'u dosyanın da group'u olur. Bu group'taki userlar yetkisi doğrultusunda dosya üzerinde işlem yapabilir. 
+
+----------------
+
+### stdin - stdout - stderror
+
+* Linux üzerinde bir uygulama çalıştığında (process) bu process'e 3 tane stream yapıştırılır. Bunlar stdin, stdout ve stderror'dur.
+
+  ![alt text](images/stdinouterror.png)
+
+* stdin giriştir ve klavyeye bağlıdır diyebiliriz. Process'e input göndermek istediğimizde bu stream kullanılır. 
+
+* stdout çıkış stream'dir. Process çalıştıktan sonra stdout stream'ine output var ise gönderir.
+
+* stderror da process çalışırken bir hata alırsa kullanılan streamdir. 
+
+#### Operatörler
+
+##### > 
+
+> operatörü ile stdout stream'ine gelen veriyi dosyaya redirect edebiliriz. Ezici bir operatördür. Yani yönlendirme yapılan doyada satır varsa ezilecektir. 
+
+##### <
+
+> operatörü ile komuta bir değeri redirect etmek istersek kullanabiliriz. Bir text dosyasının içeriğini mail olarak gönderecek bir uygulamamız olduğunu varsayalım. Bu durumda "mail x@x.com < mail.txt" komutu ile bu işlemi yapabiliriz. 
+
+##### >>
+
+> operatörü ile append işlemi yapılabilir.
+
+##### | 
+
+> pipe ile komutların stdout'larını sonraki process'in stdin'ine gönderebiliriz. Zincir şekilde komut çalıştırabilmek için kullanabiliriz.
+
+#### ;
+
+> Komutları sırası ile çalıştırır.  Önceki komutun hata alması sonraki komutların çalışmasını engellemez. 
+
+##### &&
+
+> Komutları sıra ile çalıştırmayı dener, hata aldığında sonraki komutları çalıştırmaz. 
+
+##### ||
+
+> Komutları sıra ile çalıştırmayı dener, hata aldığında sonraki komutu çalıştırır.
+ 
+-----------
+ 
+* allias'lar ile uzun komutları kısa bir komuta atayarak sürekli kullanımda kolaylık sağlayabiliriz.
+
+* home directory'deki .bash_profile dosyasinda yazan komutlar login olarak terminali kullanan kullacılar için çalıştırılır. 
+
+* .bashrc dosyasında ki komutlar ise non-login olarak çalıştırılan oturumlarda çalıştırılır. non-login, login olunarak açılmış bir oturumda bash ile yeni bir oturum açarak sağlanabilir. 
+
+
+</details>
