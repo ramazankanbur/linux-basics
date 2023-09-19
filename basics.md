@@ -163,5 +163,8 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 
 * .bashrc dosyasında ki komutlar ise non-login olarak çalıştırılan oturumlarda çalıştırılır. non-login, login olunarak açılmış bir oturumda bash ile yeni bir oturum açarak sağlanabilir. 
 
+* Fakat bash_profile dosyasında da bashrc dosyası yüklendiği için her koşulda bashrc dosyası çalıştılıyor diye düşünebiliriz.
+
+* bash_logout dosyası içine logout olurken execute edilmesini istediğimiz kodları yazabiliriz
 
 </details>
