@@ -103,6 +103,7 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 
 
 <details>
+
   <summary>07.09.2023</summary>
   
   * Linux multiuser kullanıma uygun bir sistem olduğu ve userların yetki yönetimlerini daha rahat yapabilmek için group'lar kullanılabilir. 
@@ -124,6 +125,11 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 * stdout çıkış stream'dir. Process çalıştıktan sonra stdout stream'ine output var ise gönderir.
 
 * stderror da process çalışırken bir hata alırsa kullanılan streamdir. 
+
+* stdout kodu 1 dir yani bir yönlendirme işlemi yapılacaksa ls -al 1> test.txt şeklinde yazılabilir. Varsayılan yönlendirme atdout a bağlı olduğu için genelde "1" yazılmaz. Benzer şekilde stderror için de 2 kodu kullanılır.  
+
+* /dev/null cihazı Linux için varsayılan olarak gelen bir cihazdır. İçine gönderilen her şey uzaya gönderilir. Yapılan bir işlem sonucu çıktı ile ilgilenmiyorsak buraya gönderebiliriz. 
+
 
 #### Operatörler
 
@@ -166,5 +172,44 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 * Fakat bash_profile dosyasında da bashrc dosyası yüklendiği için her koşulda bashrc dosyası çalıştılıyor diye düşünebiliriz.
 
 * bash_logout dosyası içine logout olurken execute edilmesini istediğimiz kodları yazabiliriz
+
+</details>
+
+
+
+<details>
+
+  <summary>08.09.2023</summary>
+
+  ## Process'ler
+  * Linux üzerinde çalışan her uygulama bir process olarak görülür. Process'lerle etkileşim kurulablir.
+
+  * Process'lerle iletişim kurmak için sinyallerden faydalanılır. 
+
+    ![alt text](images/process-signal-types.png)
+  
+  * SIGINT (2) process'i durdurur ve terminali bize geri verir. ctrl+c ile terminale yapışan process'e gönderilebilir. 
+
+  * SIGKILL (9) bu sinyal process öldürür ve process'in sinyali ignore etme imkanı yoktur. 
+
+  * SIGTERM (15) bu sinyal process'i öldürür fakat process sinyali ignore edebilir, üzerindeki işi bitirip process'i düzgün bir şekilde kapatmak için kullanılır.
+
+  * Process'ler çalıştıktan sonra exit code'lar ile kapanırlar. Bu kodlar aşağıdaki şekilde görülebilir. Exit code'a göre logic implemente edebiliyoruz.
+
+      ![alt text](images/exit-codes.png)
+  
+  * Exit code'lar manuel olarak kapatılan process'ler için 128+sinyal numarası şekilde hesaplanır.
+  ## Cron jobs
+ 
+ * Takvimlendirilmiş şekilde process'leri çalıştırmak için kullanabileceğim yapıdır. 
+
+ * Crontab uygulaması ile takvimlendirilmiş işleri planlayabiliriz. Crontab uygulaması bazı distrolarda yüklü olmayabilir. Yükledikten sonra servis olarak enable etmemiz gerekir.
+
+ * Crontab uygulasını yüklemek için cronie uygulamasını yüklemek gerekir. 
+
+ 
+
+
+
 
 </details>

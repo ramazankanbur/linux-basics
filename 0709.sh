@@ -74,3 +74,9 @@ history # home directory'de .bash_history altinda tutulur
 echo ilk satir \
 ikinci satir
 
+# stderror ve stdout yonlendirmeleri
+ls -al testdosya 1> test.xtx 2> hata.txt # bu sekilde hata olmayan durumda test.txt ye yazar hata olmasi durumunda hata.txt'ye yazar
+la -al testdosya > dosya.txt  2>&1 # bu kullanimda da her durumda dosya.txt'ye yazar. 2 stream'ini 1 e baglamis oluruz.
+
+# $? calisan son process'in exit code'unu saklar. 
+echo $? # calisan son process'in exit code'u gosterilir
