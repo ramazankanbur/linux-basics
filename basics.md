@@ -207,8 +207,21 @@ Terminal shell ile konuşan bir ön uygulamadır. Input olarak komutları alır 
 
  * Crontab uygulasını yüklemek için cronie uygulamasını yüklemek gerekir. 
 
- 
+ ## Systemd
 
+* Linux'un initialization sistemi systemd'dir.  systemctl ile systemd ile etkileşime girebiliriz.
+
+ ![alt text](images/systemd.png)
+
+ ## Distroların paketleme yöntemleri
+
+ * Red Hat, Centos ve Fedora temelli distrolar için rpm paketleme yöntemi kullanılır. Debian, Ubuntu temelli distrolar için deb paketleme yöntemi kullanılır. Distroların temekl farkları da paketleme yöntemleridir.
+ 
+ * Paketleri wget ile indirebiliriz fakat uygulama repository'leri üzerinden kurulumlarını yapmak daha kolay ve daha güvenlidir. rpm temelli paketleri yönetmek için iki package manager vardır. yum ve dnf. 
+
+ * deb tabanlı paketler için ise apt ya da apt-get manager'ini kullanıyoruz. 
+
+ ![alt text](images/dnf.png)
 
 
 

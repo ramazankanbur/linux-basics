@@ -37,6 +37,17 @@ crontab -e # ile conrjob yaratabiliriz.
 # crond servisini aktif etmek icin asagidaki kodu kullaniriz
 sudo systemctl start crond 
 
+# systemctl ile systemd ile etkilesime girebiliriz
+systemctl status # calisan servisleri listeler
+systemctl status systemd-journald.service # verilen servisin detaylarini gosterir
+systemctl enable systemd-journald.service # verilen servisin otomatik baslamasi icin kullanilir
+
+# dnf ile paketleri yonetebiliriz.
+dnf search cronie # cronie gecen paketleri search eder
+dnf install cronie # cronie'yi repositor'den cekip yukler 
+
+
+
 
 
 
